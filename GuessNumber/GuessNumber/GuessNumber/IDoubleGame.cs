@@ -10,10 +10,10 @@ namespace GuessNumber
     {
         protected double GuessNumber { get; set; }
 
-        bool ComparisonNumbers(double p_inpnmb)
+        bool ComparisonNumbers(double pinpnmb)
         {
             bool result = false;
-            result = GuessNumber == p_inpnmb ? true : false;
+            result = GuessNumber == pinpnmb ? true : false;
 
             return result;
         }

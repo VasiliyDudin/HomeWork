@@ -10,11 +10,11 @@ namespace GuessNumber
     {
         protected List<int> GuessNumber { get; set; }
 
-        bool ComparisonNumbers(List<int> p_inpnmbs)
+        bool ComparisonNumbers(List<int> pinpnmbs)
         { 
             bool result = false;
             int countNmbs = GuessNumber.Count, indx = 0;
-            foreach (int nmb in p_inpnmbs)
+            foreach (int nmb in pinpnmbs)
             {
                 if (GuessNumber.Contains(nmb))
                 {

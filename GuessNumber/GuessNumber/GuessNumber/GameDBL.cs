@@ -6,28 +6,33 @@ using System.Threading.Tasks;
 
 namespace GuessNumber
 {
-    internal class GameDBL : IDoubleGame, IGame
+    internal class GameDBL : GameINT
     {
         double number;
 
         public GameDBL() { }
-        double IDoubleGame.GuessNumber
+        double GuessNumber
         {
             set { number = value; }
             get { return number; }
         }
-        public string Compare(double p_inpnmb)
+
+        public bool ComparNumb(double pinpnmb)
+        {
+            bool result = number == pinpnmb ? true : false;
+            return result;
+        }
+        public string Compare(double pinpnmb)
         {
             string result = string.Empty;
-            IDoubleGame ng = new GameDBL();
 
-            if (ng.ComparisonNumbers(p_inpnmb))
+            if (ComparNumb(pinpnmb))
             {
                 result = "Вы отгадали";
             }
             else
             {
-                result = p_inpnmb > number ? "Введеное число больше отгадываемого" : "Введеное число меньше отгадываемого";
+                result = pinpnmb > number ? "Введеное число больше отгадываемого" : "Введеное число меньше отгадываемого";
             }
 
             return result;

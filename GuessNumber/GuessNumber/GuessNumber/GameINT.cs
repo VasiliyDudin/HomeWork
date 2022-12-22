@@ -9,19 +9,24 @@ namespace GuessNumber
     public class GameINT : INumbGame, IGame
     {
         public GameINT() { }
+        protected bool ComparNumb(int pinpnmb, int pnumb)
+        {
+            INumbGame numgame = new GameINT();
+            bool result = numgame.ComparisonNumbers(pinpnmb, pnumb);
+            return result;
+        }
 
-        public string Compare(int p_inpnmb, int p_numb)
+        public string Compare(int pinpnmb, int pnumb)
         {
             string result = string.Empty;
-            INumbGame ng = new GameINT();
 
-            if (ng.ComparisonNumbers(p_inpnmb, p_numb))
+            if (ComparNumb(pinpnmb, pnumb))
             {
                 result = "\nВы отгадали !\n";
             }
             else
             {
-                result = p_inpnmb > p_numb ? "Введеное число больше отгадываемого" : "Введеное число меньше отгадываемого";
+                result = pinpnmb > pnumb ? "Введеное число больше отгадываемого" : "Введеное число меньше отгадываемого";
             }
 
             return result;

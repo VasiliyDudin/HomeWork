@@ -8,7 +8,7 @@ namespace GuessNumber
 {
     internal interface IGame
     {
-        public string Compare(int p_inpnmb, int p_numb)
+        public string Compare(object pinpnmb, object pnumb)
         {
             return string.Empty;
         }

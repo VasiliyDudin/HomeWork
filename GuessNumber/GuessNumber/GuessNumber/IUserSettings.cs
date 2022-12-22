@@ -12,15 +12,17 @@ namespace GuessNumber
         protected int MaxNumb { get; set; }
         protected int Numb { get; set; }
         protected int Count { get; set; }
-        public bool CheckDip(int p_inpnmb) 
+        public bool CheckDip(int pinpnmb) 
         {
             bool result = false;
-            if (p_inpnmb >= MinNumb && p_inpnmb <= MaxNumb)
+            if (pinpnmb >= MinNumb && pinpnmb <= MaxNumb)
             {
                 result = true;
             }
 
             return result;
         }
+
+        public abstract string GetCount();
     }
 }

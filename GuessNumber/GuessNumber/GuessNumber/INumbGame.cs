@@ -8,10 +8,10 @@ namespace GuessNumber
 {
     public interface INumbGame : ICompar
     {
-        public bool ComparisonNumbers(int p_inpnmb, int p_guessnumb)
+        public bool ComparisonNumbers(int pinpnmb, int pguessnumb)
         {
             bool result = false;
-            result = p_guessnumb == p_inpnmb ? true : false;
+            result = pguessnumb == pinpnmb ? true : false;
 
             return result;
         }

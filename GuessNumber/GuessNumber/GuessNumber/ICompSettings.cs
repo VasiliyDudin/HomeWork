@@ -12,7 +12,7 @@ namespace GuessNumber
         protected int MaxNumb { get; set; }
         protected int Numb { get; set; }
         protected int Count { get; set; }
-        public bool CheckDip(int p_inpnmb)
+        public bool CheckDip(int pinpnmb)
         {
             return true;
         }

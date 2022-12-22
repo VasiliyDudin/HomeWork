@@ -11,8 +11,8 @@ namespace GuessNumber
         private int min;
         private int max;
         private int count;
-        private int numb;
-        public int NUMBER { get { return numb; } }
+        private int number;
+        public int NUMBER { get { return number; } }
         int IUserSettings.MinNumb
         {
             set { min = value; }
@@ -25,8 +25,8 @@ namespace GuessNumber
         }
         int IUserSettings.Numb
         {
-            set { numb = value; }
-            get { return numb; }
+            set { number = value; }
+            get { return number; }
         }
         int IUserSettings.Count
         {
@@ -45,8 +45,8 @@ namespace GuessNumber
         }
         int ICompSettings.Numb
         {
-            set { numb = value; }
-            get { return numb; }
+            set { number = value; }
+            get { return number; }
         }
         int ICompSettings.Count
         {
@@ -54,18 +54,18 @@ namespace GuessNumber
             get { return count; }
         }
 
-        public Settings(int p_min, int p_max, int p_count)
+        public Settings(int pmin, int pmax, int pcount)
         {
-            min = p_min;
-            max = p_max;
-            count = p_count;
+            min = pmin;
+            max = pmax;
+            count = pcount;
             Generete();
         }
 
-        public bool CheckDip(int p_inpnmb)
+        public bool CheckDip(int pinpnmb)
         {
             bool result = false;
-            if (p_inpnmb >= min && p_inpnmb <= max)
+            if (pinpnmb >= min && pinpnmb <= max)
             {
                 result = true;
             }
@@ -76,7 +76,12 @@ namespace GuessNumber
         public void Generete()
         {
             Random rnd = new Random();
-            numb = rnd.Next(min, max); 
+            number = rnd.Next(min, max); 
+        }
+
+        string IUserSettings.GetCount()
+        { 
+            return count.ToString();
         }
     }
 }
