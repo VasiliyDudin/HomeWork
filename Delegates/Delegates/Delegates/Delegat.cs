@@ -10,7 +10,7 @@ namespace Delegates
 {
     internal static class Delegat
     {
-        public static T GetMax<T>(this IEnumerable<T> e, Func<T, float> getParameter) where T : class//Number
+        public static T GetMax<T>(this IEnumerable<T> e, Func<T, float> getParameter) where T : class
         {
             T result = null;
             float max = 0;
