@@ -10,22 +10,23 @@ namespace Delegates
 {
     internal static class Delegat
     {
-        public static Func<Number, float> _GetPar;
-        public static void GetMax<T>(this IEnumerable e, Func<T, float> getParameter) where T : Number
+        public static T GetMax<T>(this IEnumerable<T> e, Func<T, float> getParameter) where T : class//Number
         {
-            _GetPar = (Func<Number, float>)getParameter;
-            float res;
-            Number max = new Number(0);
-            List<Number> numbers = (List<Number>)e;
-            foreach (Number vl in numbers)
+            T result = null;
+            float max = 0;
+            foreach (var vl in e)
             {
-                if (vl > max)
-                    max = vl;
+                float tmp = getParameter.Invoke((T)vl);
+                if (tmp > max)
+                {
+                    max = tmp;
+                    result = vl;
+                }
             }
 
-            res = _GetPar.Invoke(max);
-            if (res >= 0)
-                Console.WriteLine(res + " - this max value");
+            if (max >= 0)
+                Console.WriteLine(max + " - this max value");
+            return result;
         }
     }
 }

@@ -8,31 +8,23 @@ using System.Security.Cryptography.Xml;
 
 
 int length = 10, r;
-IList<Number> Lids = new List<Number>();
+IList<object> Lids = new List<object>();
 Random rnd = new Random();
-Func<Number, float> getPar = getParameter;
+Func<object, float> getPar = getParameter;
 
-for (double i = 1; i < length; )
+for (double i = 1; i < length; i++)
 {
     r = rnd.Next(1, 100);
-    Lids.Add(new Number(r*i));
-    i += 0.5;
+    Lids.Add(r * i);
 }
 
-Delegat.GetMax<Number>(Lids, getPar);
+Delegat.GetMax<object>(Lids, getPar);
 Console.ReadKey();
 
 
-static float getParameter(Number prm)
+static float getParameter(object prm)
 {
-    float res = -1;
-    if (!string.IsNullOrEmpty(prm.GetT()))
-    {
-        if(prm.GetT() == "Double")
-            res = (float)Convert.ToDouble(prm.VDBL);
-        if (prm.GetT() == "Int")
-            res = (float)Convert.ToDouble(prm.VINT);
-    }
+    float res = (float)Convert.ToDouble(prm);
 
     return res;
 }
