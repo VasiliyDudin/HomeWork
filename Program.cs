@@ -23,6 +23,7 @@ for (int i = 0; i < countthread; i++)
 {
     Thread thrd = new Thread(() => { sum2 += OnGetLines(); });
     threads.Add(thrd);
+    thrd.Start();
 }
 
 for (int i=0; i<count; i++)
@@ -37,9 +38,7 @@ Console.WriteLine(sum);
 //watch.Start();
 foreach (Thread thrd in threads)
 {
-    thrd.Start();
     thrd.Join();
-    thrd.Interrupt();
 }
 
 
