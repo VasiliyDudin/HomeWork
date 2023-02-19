@@ -48,25 +48,27 @@ using (StreamReader reader = File.OpenText(Generator._FileName))
 for (int i = 0; i < Generator._threadCount; i++)
 {
     int CountRep = 0;
-    ThreadPool.QueueUserWorkItem(HandleInThreadPool, CountRep);
+    ThreadPool.QueueUserWorkItem(OnGetLinesAsync);//(HandleInThreadPool, CountRep);
     /*Thread thread = new Thread(() => { CountRep = OnGetLines(); });
     threads.Add(thread);
     threads[i].Start();
-    threads[i].Join();
     while (CountRep > 0 && CountRep < 10)
     {
         Thread.Sleep(10);
+        threads[i].Abort();
         threads[i].Start();
-    }
-    threads[i].Interrupt();*/
+    }*/
 }
 
-Thread.Sleep(10000);
+/*for (int i = 0; i < Generator._threadCount; i++)
+{
+    threads[i].Join();
+}*/
 
 stopWatch.Stop();
 Console.ReadLine();
 
-async Task<int> OnGetLinesAsync()
+async void OnGetLinesAsync(object item)//int OnGetLines()
 {
     int result = 0;
     try
@@ -114,12 +116,5 @@ async Task<int> OnGetLinesAsync()
         result++;
     }
 
-    return result;
-}
-
-void HandleInThreadPool(object item)
-{
-    int CountRep = (int)item;
-    ThreadPool.QueueUserWorkItem(HandleInThreadPool, CountRep);
-    var res = OnGetLinesAsync();
+    //return result;
 }
