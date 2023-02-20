@@ -33,7 +33,7 @@ int count = 0;
         linesF.Add(s);
     }
 }*/
-
+CountdownEvent countdown = new CountdownEvent(Generator._threadCount);
 var stopWatch = new Stopwatch();
 stopWatch.Start();
 using (StreamReader reader = File.OpenText(Generator._FileName))
@@ -65,7 +65,9 @@ for (int i = 0; i < Generator._threadCount; i++)
     threads[i].Join();
 }*/
 
+countdown.Wait();
 stopWatch.Stop();
+
 Console.ReadLine();
 
 async void OnGetLinesAsync(object item)//int OnGetLines()
