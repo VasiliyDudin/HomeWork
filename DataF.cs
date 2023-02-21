@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Asinc
 {
-    internal class DataF
+    public class DataF
     {
         int Id;
         string fio;

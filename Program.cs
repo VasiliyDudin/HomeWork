@@ -1,12 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Asinc;
 using System.Diagnostics;
-using System.IO;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Xml.Linq;
 
 Console.WriteLine("Run generate fila by thread ?");
 if (Console.ReadKey().Key == ConsoleKey.Y)
@@ -21,29 +15,18 @@ else
 }
 
 List<string> linesF = new List<string>();
+List<string> linesConvert = new List<string>();
 List<Thread> threads = new List<Thread>();
 List<DataF> datas = new List<DataF>();
+DataLoader loader = new DataLoader();
+CustomerRepository dataBase = new CustomerRepository();
+DataParser dataParse = new DataParser();
 int count = 0;
 
-/*using (StreamReader sr = File.OpenText(Generator._FileName))
-{
-    string s;
-    while ((s = sr.ReadLine()) != null)
-    {
-        linesF.Add(s);
-    }
-}*/
 CountdownEvent countdown = new CountdownEvent(Generator._threadCount);
 var stopWatch = new Stopwatch();
 stopWatch.Start();
-using (StreamReader reader = File.OpenText(Generator._FileName))
-{
-    string s;
-    while ((s = await reader.ReadLineAsync()) != null)
-    {
-        linesF.Add(s);
-    }
-}
+linesF = loader.LoadData();
 
 for (int i = 0; i < Generator._threadCount; i++)
 {
@@ -79,38 +62,16 @@ async void OnGetLinesAsync(object item)//int OnGetLines()
         int id = 0;
         for (int i = count; i < linesF.Count; i++)
         {
-            string line = linesF[i];
+            linesConvert.Add(linesF[i]);
             count++;
-            if (line.Contains("ID:") && id == 0)
+            if (i % 4 == 0)
             {
-                id = Convert.ToInt32(line.Substring(4, line.Length - 4));
-                continue;
-            }
-            else if (string.IsNullOrEmpty(fio))
-            {
-                fio = line;
-                continue;
-            }
-            else if (string.IsNullOrEmpty(email))
-            {
-                email = line;
-                continue;
-            }
-            else if (string.IsNullOrEmpty(phone))
-            {
-                phone = line;
-                continue;
-            }
-            else
-            {
-                count--;
-                break;
+                DataF df = dataParse.Parse(linesConvert);
+                datas.Add(df);
+                await CustomerRepository.AddDataAsinc(df);
+                linesConvert.Clear();
             }
         }
-
-        DataF df = new DataF(id, fio, email, phone);
-        datas.Add(df);
-        await DB.CreateCustomerAsync(df);
     }
     catch (Exception ex)
     { 

@@ -13,7 +13,7 @@ namespace Asinc
     internal class Generator
     {
         public const string _FileName = "GenerateFile.csv";
-        public const int _threadCount = 100;
+        public const int _threadCount = 1000000;
         static public void Run()
         {
             long phone = 79995008010;
