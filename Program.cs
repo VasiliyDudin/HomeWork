@@ -9,7 +9,8 @@ const int Tcount = 1000;
 
 int[] sumints = new int[count];
 List<Thread> threads = new List<Thread>();
-int sum = 0, sum2 = 0, indx = 0, param = 0, countthread = count / Tcount;
+var numbers = Enumerable.Range(0, count);
+int sum = 0, sum2 = 0, sum3 = 0, indx = 0, param = 0, countthread = count / Tcount;
 
 Random rnd = new Random();
 Stopwatch watch = new Stopwatch();
@@ -60,5 +61,18 @@ int OnGetLines()
 //watch.Stop();
 
 Console.WriteLine(sum2);
+
+watch.Start();
+//sum3 = numbers.AsParallel().Sum();
+Parallel.ForEach( numbers, i =>
+{
+    lock (numbers)
+    {
+        sum3 += i;
+    }
+});
+watch.Stop();
+
+Console.WriteLine(sum3);
 
 Console.ReadLine();
