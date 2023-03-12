@@ -8,20 +8,10 @@ using System.Threading.Tasks;
 
 namespace HW_Prototype
 {
-    internal interface IHouse
+    internal interface IBuilding
     {
         string GetInfo();
         Point GetLocation();
         long GetCost();
-    }
-
-    public enum TypeHouse
-    {
-        House,
-        Cottage,
-        Country_house,
-        Townhouse,
-        Apartment_building,
-        Penthouse
     }
 }

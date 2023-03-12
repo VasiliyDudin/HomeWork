@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Обучение\\OTUS\\HomeWork\\HW_Prototype\\HW_Prototype\\HW_Prototype\\HW_Prototype.csproj": {}
+    "C:\\Users\\VasDu\\OneDrive\\Документы\\GitHub\\HomeWork\\HW_Prototype\\HW_Prototype.csproj": {}
   },
   "projects": {
-    "C:\\Обучение\\OTUS\\HomeWork\\HW_Prototype\\HW_Prototype\\HW_Prototype\\HW_Prototype.csproj": {
+    "C:\\Users\\VasDu\\OneDrive\\Документы\\GitHub\\HomeWork\\HW_Prototype\\HW_Prototype.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Обучение\\OTUS\\HomeWork\\HW_Prototype\\HW_Prototype\\HW_Prototype\\HW_Prototype.csproj",
+        "projectUniqueName": "C:\\Users\\VasDu\\OneDrive\\Документы\\GitHub\\HomeWork\\HW_Prototype\\HW_Prototype.csproj",
         "projectName": "HW_Prototype",
-        "projectPath": "C:\\Обучение\\OTUS\\HomeWork\\HW_Prototype\\HW_Prototype\\HW_Prototype\\HW_Prototype.csproj",
+        "projectPath": "C:\\Users\\VasDu\\OneDrive\\Документы\\GitHub\\HomeWork\\HW_Prototype\\HW_Prototype.csproj",
         "packagesPath": "C:\\Users\\VasDu\\.nuget\\packages\\",
-        "outputPath": "C:\\Обучение\\OTUS\\HomeWork\\HW_Prototype\\HW_Prototype\\HW_Prototype\\obj\\",
+        "outputPath": "C:\\Users\\VasDu\\OneDrive\\Документы\\GitHub\\HomeWork\\HW_Prototype\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
